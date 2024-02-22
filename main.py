@@ -1,8 +1,9 @@
 # OpenCV Library 
 import cv2
+import matplotlib.pyplot as plt
 
 # Path to the image with 
-image_path = "images/4_faces.jpg"
+image_path = "./images/4_faces.jpg"
 
 # Read the image
 img = cv2.imread(image_path)
@@ -32,16 +33,25 @@ face_classifier = cv2.CascadeClassifier(
 #   - Changing this number will reduce the amount of false positives
 # - minSize is the minimum size of the object to be detected
 face = face_classifier.detectMultiScale(
-    gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(40,40)
+    gray_image, scaleFactor=1.2, minNeighbors=10, minSize=(50,50)
 )
 
 # Drawing the squares from the given box
 for (x, y, w, h) in face:
+    # Notify the user that a face has been detected
+    print("Processing face...")
+
     # Using OpenCV function to create the rectangle at the given potion
     color = (0, 255, 0) # Green
-    thickness = 4
+    thickness = 6
     cv2.rectangle(img, (x,y), (x+w,y+h), color, thickness) 
 
 
-# Converting the image back into RBG
+# Turning the color of the image back to normal
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# Displaying the image with pyplot 
+plt.figure()
+plt.imshow(img_rgb)
+plt.axis('off')
+plt.show()
