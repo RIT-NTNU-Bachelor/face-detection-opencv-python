@@ -1,6 +1,8 @@
 # OpenCV Library 
 import cv2
 
+from detect_face import detect_face
+
 # Uses OpenCV's built-in function for detecting a face.
 # image_path => path of the image.
 # Returns the image with green boxes around
@@ -10,31 +12,9 @@ def detect_face_from_image(image_path="./images/4_faces.jpg"):
 
     # Printing the image
     print(f"Original Image dimension: ({img.shape})")
-
-
-    # Turing the image into a grayscale image
-    gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    # Printing the gray scale image
-    print(f"Gray-Scale Image dimension: ({gray_image.shape})")
-
-    # Loading the classifier from a pretrained dataset
-    face_classifier = cv2.CascadeClassifier(
-        cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-    )
-
-    # Performing the face detection
-    # - Using the method detectMultiScale() to detect faces
-    # - Using the grayscale image 
-    # - scaleFactor is for scaling down the input image
-    #   - Makes it easier to detect faces 
-    #   - Reducing size by 10%
-    # - minNeighbors is for setting the number of neighboring rectangles next to a object to make it valid
-    #   - Changing this number will reduce the amount of false positives
-    # - minSize is the minimum size of the object to be detected
-    face = face_classifier.detectMultiScale(
-        gray_image, scaleFactor=1.2, minNeighbors=10, minSize=(50,50)
-    )
+    
+    # Detecting the face
+    face = detect_face(img)
 
     # Drawing the squares from the given box
     for (x, y, w, h) in face:
