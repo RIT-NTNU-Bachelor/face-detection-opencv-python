@@ -35,3 +35,13 @@ face = face_classifier.detectMultiScale(
     gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(40,40)
 )
 
+# Drawing the squares from the given box
+for (x, y, w, h) in face:
+    # Using OpenCV function to create the rectangle at the given potion
+    color = (0, 255, 0) # Green
+    thickness = 4
+    cv2.rectangle(img, (x,y), (x+w,y+h), color, thickness) 
+
+
+# Converting the image back into RBG
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
