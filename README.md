@@ -1,5 +1,5 @@
 # face-detection-opencv-python
-Face detection with Python. Using the library - OpenCV. Experinmenting with pretrained Haar Cascade
+Face detection with Python. Using the library - OpenCV. Experimenting with pre-trained Haar Cascade
 
 
 # Resources
