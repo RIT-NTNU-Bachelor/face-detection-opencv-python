@@ -5,7 +5,7 @@ def detect_face(img, scale=1.1, neighbors=10, size=50):
     gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Printing the gray scale image
-    print(f"Gray-Scale Image dimension: ({gray_image.shape})")
+    # print(f"Gray-Scale Image dimension: ({gray_image.shape})")
 
     # Loading the classifier from a pretrained dataset
     face_classifier = cv2.CascadeClassifier(
